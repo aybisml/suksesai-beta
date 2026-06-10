@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AI Tools Studio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Canvas Gemini meng-inject credential ke variabel ini saat runtime -->
+  <script>const apiKey = "";</script>
+</head>
+<body>
+
+  <!-- ============ LOGIN ============ -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-logo"><span class="login-mark">A</span> AI Tools Studio</div>
+      <h1>Masuk</h1>
+      <p class="sub">Gunakan email yang sudah didaftarkan untuk mengakses semua tools.</p>
+      <form id="login-form" autocomplete="off">
+        <label for="login-email">Email</label>
+        <input class="control" id="login-email" type="email" placeholder="nama@email.com" required>
+        <div class="login-error" id="login-error"></div>
+        <button class="btn btn-primary btn-block" id="login-btn" type="submit">Masuk</button>
+      </form>
+      <p class="login-foot">Belum punya akses? Hubungi admin untuk didaftarkan.</p>
+    </div>
+  </div>
+
+  <!-- ============ APP ============ -->
+  <div id="app-shell" class="hidden">
+    <div class="brandbar">
+      <span class="brand-mark">A</span> AI Tools Studio
+    </div>
+
+    <header class="topbar">
+      <button class="icon-btn" id="menu-toggle" aria-label="Menu">☰</button>
+      <div class="search">
+        <span class="ico">⌕</span>
+        <input id="search-input" type="search" placeholder="Cari tool… (mis. foto produk, caption, logo)">
+      </div>
+      <div class="top-spacer"></div>
+      <button class="icon-btn" id="theme-toggle" aria-label="Ganti tema">☾</button>
+      <div class="user-chip">
+        <span class="uname" id="user-name">—</span>
+        <span class="user-av" id="user-initial">?</span>
+      </div>
+      <button class="icon-btn" id="logout-btn" aria-label="Keluar" title="Keluar">⎋</button>
+    </header>
+
+    <aside class="sidebar"><nav id="sidebar-nav"></nav></aside>
+
+    <main class="main">
+      <div id="home-view"></div>
+      <div id="tool-view" class="hidden"></div>
+    </main>
+  </div>
+
+  <div id="toast-wrap"></div>
+
+  <script>
+    function toast(msg, kind) {
+      const wrap = document.getElementById('toast-wrap');
+      const t = document.createElement('div');
+      t.className = 'toast' + (kind ? ' ' + kind : '');
+      t.textContent = msg;
+      wrap.appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 250); }, 2200);
+    }
+  </script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
