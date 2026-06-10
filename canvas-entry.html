@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- =====================================================================
      canvas-entry.html — TEMPEL ISI FILE INI KE GEMINI CANVAS
      ---------------------------------------------------------------------
@@ -6,58 +6,111 @@
      di-purge di jsDelivr setelah setiap push.
      ===================================================================== -->
 <html lang="id" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>AI Tools Studio</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/USERNAME/REPO@main/css/style.css">
-  <script>const apiKey = "";</script>
-</head>
-<body>
-
-  <div id="login-screen">
-    <div class="login-card">
-      <div class="login-logo"><span class="login-mark">A</span> AI Tools Studio</div>
-      <h1>Masuk</h1>
-      <p class="sub">Gunakan email yang sudah didaftarkan untuk mengakses semua tools.</p>
-      <form id="login-form" autocomplete="off">
-        <label for="login-email">Email</label>
-        <input class="control" id="login-email" type="email" placeholder="nama@email.com" required>
-        <div class="login-error" id="login-error"></div>
-        <button class="btn btn-primary btn-block" id="login-btn" type="submit">Masuk</button>
-      </form>
-      <p class="login-foot">Belum punya akses? Hubungi admin untuk didaftarkan.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>AI Tools Studio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/aybisml/suksesai-beta@main/css/style.css"
+    />
+    <script>
+      const apiKey = "";
+    </script>
+  </head>
+  <body>
+    <div id="login-screen">
+      <div class="login-card">
+        <div class="login-logo">
+          <span class="login-mark">A</span> AI Tools Studio
+        </div>
+        <h1>Masuk</h1>
+        <p class="sub">
+          Gunakan email yang sudah didaftarkan untuk mengakses semua tools.
+        </p>
+        <form id="login-form" autocomplete="off">
+          <label for="login-email">Email</label>
+          <input
+            class="control"
+            id="login-email"
+            type="email"
+            placeholder="nama@email.com"
+            required
+          />
+          <div class="login-error" id="login-error"></div>
+          <button
+            class="btn btn-primary btn-block"
+            id="login-btn"
+            type="submit"
+          >
+            Masuk
+          </button>
+        </form>
+        <p class="login-foot">
+          Belum punya akses? Hubungi admin untuk didaftarkan.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div id="app-shell" class="hidden">
-    <div class="brandbar"><span class="brand-mark">A</span> AI Tools Studio</div>
-    <header class="topbar">
-      <button class="icon-btn" id="menu-toggle" aria-label="Menu">☰</button>
-      <div class="search"><span class="ico">⌕</span>
-        <input id="search-input" type="search" placeholder="Cari tool…"></div>
-      <div class="top-spacer"></div>
-      <button class="icon-btn" id="theme-toggle" aria-label="Ganti tema">☾</button>
-      <div class="user-chip"><span class="uname" id="user-name">—</span><span class="user-av" id="user-initial">?</span></div>
-      <button class="icon-btn" id="logout-btn" aria-label="Keluar" title="Keluar">⎋</button>
-    </header>
-    <aside class="sidebar"><nav id="sidebar-nav"></nav></aside>
-    <main class="main"><div id="home-view"></div><div id="tool-view" class="hidden"></div></main>
-  </div>
+    <div id="app-shell" class="hidden">
+      <div class="brandbar">
+        <span class="brand-mark">A</span> AI Tools Studio
+      </div>
+      <header class="topbar">
+        <button class="icon-btn" id="menu-toggle" aria-label="Menu">☰</button>
+        <div class="search">
+          <span class="ico">⌕</span>
+          <input id="search-input" type="search" placeholder="Cari tool…" />
+        </div>
+        <div class="top-spacer"></div>
+        <button class="icon-btn" id="theme-toggle" aria-label="Ganti tema">
+          ☾
+        </button>
+        <div class="user-chip">
+          <span class="uname" id="user-name">—</span
+          ><span class="user-av" id="user-initial">?</span>
+        </div>
+        <button
+          class="icon-btn"
+          id="logout-btn"
+          aria-label="Keluar"
+          title="Keluar"
+        >
+          ⎋
+        </button>
+      </header>
+      <aside class="sidebar"><nav id="sidebar-nav"></nav></aside>
+      <main class="main">
+        <div id="home-view"></div>
+        <div id="tool-view" class="hidden"></div>
+      </main>
+    </div>
 
-  <div id="toast-wrap"></div>
+    <div id="toast-wrap"></div>
 
-  <script>
-    function toast(msg, kind){const w=document.getElementById('toast-wrap');const t=document.createElement('div');
-      t.className='toast'+(kind?' '+kind:'');t.textContent=msg;w.appendChild(t);
-      setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),250);},2200);}
+    <script>
+      function toast(msg, kind) {
+        const w = document.getElementById("toast-wrap");
+        const t = document.createElement("div");
+        t.className = "toast" + (kind ? " " + kind : "");
+        t.textContent = msg;
+        w.appendChild(t);
+        setTimeout(() => {
+          t.style.opacity = "0";
+          setTimeout(() => t.remove(), 250);
+        }, 2200);
+      }
 
-    // app.js memuat tools.json relatif. Di Canvas, sediakan path absolut ke CDN:
-    window.TOOLS_URL = "https://cdn.jsdelivr.net/gh/USERNAME/REPO@main/tools.json";
-  </script>
-  <script src="https://cdn.jsdelivr.net/gh/USERNAME/REPO@main/js/api.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/USERNAME/REPO@main/js/auth.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/USERNAME/REPO@main/js/renderer.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/USERNAME/REPO@main/js/app.js"></script>
-</body>
+      // app.js memuat tools.json relatif. Di Canvas, sediakan path absolut ke CDN:
+      window.TOOLS_URL =
+        "https://cdn.jsdelivr.net/gh/aybisml/suksesai-beta@main/tools.json";
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/aybisml/suksesai-beta@main/js/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/aybisml/suksesai-beta@main/js/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/aybisml/suksesai-beta@main/js/renderer.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/aybisml/suksesai-beta@main/js/app.js"></script>
+  </body>
 </html>
