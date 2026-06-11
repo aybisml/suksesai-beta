@@ -63,11 +63,15 @@ function renderTool(tool) {
         control = buildFileField(id, inp);
         break;
       case 'select':
-        control = el('select', 'control');
-        control.id = id;
-        (inp.options || []).forEach(o => {
-          const opt = el('option'); opt.value = o; opt.textContent = o; control.appendChild(opt);
-        });
+        if (inp.allowCustom) {
+          control = buildCustomSelect(id, inp);
+        } else {
+          control = el('select', 'control');
+          control.id = id;
+          (inp.options || []).forEach(o => {
+            const opt = el('option'); opt.value = o; opt.textContent = o; control.appendChild(opt);
+          });
+        }
         break;
       case 'range':
         control = buildRangeField(id, inp);
@@ -116,6 +120,45 @@ function genLabel(tool) {
   if (tool.outputType === 'sound') return '🔊 Buat Audio';
   if (tool.outputType === 'text') return '✨ Buat Teks';
   return '✨ Generate';
+}
+
+/* Select yang bisa diisi custom: pilih preset ATAU ketik sendiri. */
+function buildCustomSelect(id, inp) {
+  const box = el('div', 'custom-select');
+  const sel = el('select', 'control');
+  sel.id = id;
+  (inp.options || []).forEach(o => {
+    const opt = el('option'); opt.value = o; opt.textContent = o; sel.appendChild(opt);
+  });
+  const cust = el('option'); cust.value = '__custom__'; cust.textContent = '✏️ Lainnya (ketik sendiri)…';
+  sel.appendChild(cust);
+
+  const txt = el('input', 'control custom-input hidden');
+  txt.id = id + '__custom';
+  txt.type = 'text';
+  txt.placeholder = customHint(inp);
+
+  sel.onchange = () => {
+    if (sel.value === '__custom__') { txt.classList.remove('hidden'); txt.focus(); }
+    else txt.classList.add('hidden');
+  };
+  box.appendChild(sel);
+  box.appendChild(txt);
+  return box;
+}
+
+function customHint(inp) {
+  const idl = (inp.id + ' ' + (inp.label || '')).toLowerCase();
+  if (/warna|palet/.test(idl)) return 'mis. biru navy + emas';
+  if (/gaya|style/.test(idl)) return 'mis. Disney style, Ghibli, cyberpunk';
+  if (/tema|musim|momen|event/.test(idl)) return 'mis. Anniversary toko, Grand Opening';
+  if (/ekspresi/.test(idl)) return 'mis. menahan tawa, melamun';
+  if (/pose/.test(idl)) return 'mis. tangan di pinggang, melompat';
+  if (/tone|nada/.test(idl)) return 'mis. sarkas, storytelling';
+  if (/audiens|demografi/.test(idl)) return 'mis. pendaki gunung, kolektor';
+  if (/industri|niche|kategori/.test(idl)) return 'mis. pet shop, jasa laundry';
+  if (/bahasa|aksen/.test(idl)) return 'mis. Batak, Minang';
+  return 'Ketik pilihanmu sendiri…';
 }
 
 function buildFileField(id, inp) {
@@ -174,7 +217,11 @@ async function runTool(tool, fields, ui) {
       if (inp.required && !f) missing = inp.label || inp.id;
       values[inp.id] = f ? '(foto terlampir)' : '';
     } else {
-      const v = (node?.value ?? '').trim();
+      let v = (node?.value ?? '').trim();
+      if (v === '__custom__') {
+        const cnode = document.getElementById('f_' + inp.id + '__custom');
+        v = (cnode?.value ?? '').trim();
+      }
       values[inp.id] = v;
       if (inp.required && !v) missing = inp.label || inp.id;
       if (/rasio|aspek|ratio/i.test(inp.id) && v) aspect = normalizeAspect(v);

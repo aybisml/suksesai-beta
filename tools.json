@@ -52,7 +52,8 @@
                 "Lifestyle",
                 "Flat Lay"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "warna-background",
@@ -67,7 +68,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -89,7 +91,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional commercial photo for: Foto Produk Affiliate.\nContext: Ubah foto produk biasa menjadi visual affiliate yang eye-catching. AI menghasilkan foto studio-quality dengan berbagai style dan background untuk meningkatkan klik & konversi.\n\nUse the uploaded reference image as the PRIMARY subject/product.\n\nUser parameters:\n- Nama Produk: {{nama-produk}}\n- Platform Target: {{platform-target}}\n- Style Foto: {{style-foto}}\n- Warna Background: {{warna-background}}\nAspect Ratio: {rasio_aspek}\n\nPHOTO REQUIREMENTS:\n- Product must be the clear focal point\n- Professional product photography quality\n- Perfect studio lighting, clean composition\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks, NO captions inside image\n- Suitable for marketplace / social media use"
+          "promptTemplate": "Buat foto produk komersial profesional untuk \"{{nama-produk}}\" yang siap tayang di {{platform-target}}. Gunakan produk dari foto yang diunggah sebagai subjek utama.\n\nSTYLE FOTO: {{style-foto}} | BACKGROUND: {{warna-background}}\n\nREQUIREMENTS:\n- Produk dari foto referensi WAJIB jadi subjek; bentuk & detail dipertahankan persis\n- Pencahayaan profesional sesuai style\n- Komposisi menjual, fokus tajam pada produk\n- Kualitas tinggi, fotorealistik, 8K\n- Tanpa teks overlay, tanpa watermark\n- Dioptimalkan untuk marketplace {{platform-target}}\n\nHasil: foto produk {{rasio_aspek}} berkualitas iklan."
         },
         {
           "id": "virtual-try-on",
@@ -126,7 +128,8 @@
                 "Side",
                 "Back"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jenis-produk",
@@ -137,7 +140,8 @@
                 "Celana",
                 "Aksesori"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -159,7 +163,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Virtual Try-On.\nContext: Coba produk fashion secara virtual tanpa harus fitting langsung. Upload foto dan produk, AI akan menampilkan hasil pemakaian dari berbagai angle secara realistis dan profesional.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Pilih Angle: {{pilih-angle}}\n- Jenis Produk: {{jenis-produk}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Buat foto fotorealistik model yang mengenakan/memakai produk fashion.\n\nGAMBAR 1 = orang/model (pertahankan identitas & wajah). GAMBAR 2 = produk fashion ({{jenis-produk}}) yang harus dikenakan. SUDUT: {{pilih-angle}}.\n\nREQUIREMENTS:\n- Model WAJIB terlihat mengenakan/memakai produk dari gambar produk\n- Pertahankan identitas dan wajah model dari foto orang\n- Kualitas fashion photography profesional\n- Pencahayaan natural, komposisi realistis, 4K\n- Sudut kamera: {{pilih-angle}}\n\nCRITICAL: produk harus jelas dikenakan/dipakai model pada sudut yang ditentukan."
         },
         {
           "id": "pose-fashion",
@@ -182,9 +186,18 @@
             {
               "id": "pilih-variasi-pose",
               "label": "Pilih Variasi Pose",
-              "type": "text",
+              "type": "select",
               "required": false,
-              "placeholder": "Masukkan pilih variasi pose…"
+              "options": [
+                "Berdiri percaya diri",
+                "Tangan di pinggang",
+                "Berjalan",
+                "Duduk santai",
+                "Menengok ke samping",
+                "Bersandar",
+                "Dynamic / bergerak"
+              ],
+              "allowCustom": true
             },
             {
               "id": "style-pencahayaan",
@@ -198,7 +211,8 @@
                 "Soft Light",
                 "Golden Hour",
                 "Backlight"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -220,7 +234,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Pose Fashion.\nContext: Hasilkan variasi foto fashion dengan pose yang beragam hanya dari 1 foto referensi. Cocok untuk katalog produk, konten affiliate, dan feed media sosial yang dinamis.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Pilih Variasi Pose: {{pilih-variasi-pose}}\n- Style Pencahayaan: {{style-pencahayaan}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Kamu adalah fotografer fashion profesional AI. Gunakan orang pada foto referensi sebagai subjek, lalu hasilkan foto fashion baru berkualitas tinggi.\n\nSUBJEK: orang yang PERSIS sama dari referensi (wajah, warna kulit, rambut, bentuk tubuh, outfit dipertahankan).\nPOSE: {{pilih-variasi-pose}} | PENCAHAYAAN: {{style-pencahayaan}}\nKUALITAS: ultra tajam, fotorealistik, 8K, fashion photography profesional.\n\nPENTING: hasilkan foto baru orang ini dalam pose yang ditentukan. Semua fitur personal identik dengan referensi."
         },
         {
           "id": "review-produk",
@@ -275,7 +289,8 @@
                 "Positif",
                 "Netral"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -297,7 +312,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional commercial photo for: Review Produk.\nContext: Buat konten review produk affiliate yang menarik dan persuasif. AI menghasilkan visual review lengkap dengan highlight fitur, rating, dan elemen kepercayaan untuk meningkatkan konversi.\n\nUse the uploaded reference image as the PRIMARY subject/product.\n\nUser parameters:\n- Nama Produk: {{nama-produk}}\n- Keunggulan Produk: {{keunggulan-produk}}\n- Platform Review: {{platform-review}}\n- Tone Review: {{tone-review}}\nAspect Ratio: {rasio_aspek}\n\nPHOTO REQUIREMENTS:\n- Product must be the clear focal point\n- Professional product photography quality\n- Perfect studio lighting, clean composition\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks, NO captions inside image\n- Suitable for marketplace / social media use"
+          "promptTemplate": "Buat konten review produk untuk \"{{nama-produk}}\".\n\nGunakan foto produk yang diunggah; sajikan ulang sebagai foto review profesional (pencahayaan baik, fokus tajam, 8K) untuk {{platform-review}}.\n\nLalu tulis review dengan tone {{tone-review}} yang menonjolkan keunggulan: {{keunggulan-produk}}\n- Hook pembuka\n- Pengalaman & manfaat nyata\n- Kelebihan (dan kekurangan ringan agar kredibel)\n- Verdict + CTA + hashtag\n\nTanpa watermark, tanpa klaim berlebihan. Cocok untuk {{platform-review}}."
         },
         {
           "id": "review-makanan",
@@ -344,7 +359,8 @@
                 "Casual",
                 "Profesional"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "bahasa",
@@ -354,7 +370,8 @@
                 "Indonesia",
                 "Inggris"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -376,7 +393,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional commercial photo for: Review Makanan.\nContext: Buat konten review makanan bergaya selebgram dan TikToker secara instan. AI menghasilkan visual dan narasi review yang menarik, autentik, dan siap posting di berbagai platform.\n\nUse the uploaded reference image as the PRIMARY subject/product.\n\nUser parameters:\n- Nama Makanan/Restoran: {{nama-makananrestoran}}\n- Platform Target: {{platform-target}}\n- Tone Review: {{tone-review}}\n- Bahasa: {{bahasa}}\nAspect Ratio: {rasio_aspek}\n\nPHOTO REQUIREMENTS:\n- Product must be the clear focal point\n- Professional product photography quality\n- Perfect studio lighting, clean composition\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks, NO captions inside image\n- Suitable for marketplace / social media use"
+          "promptTemplate": "Buat konten review makanan untuk \"{{nama-makananrestoran}}\".\n\nGunakan foto makanan yang diunggah; sajikan ulang sebagai food photography profesional yang menggugah selera (pencahayaan hangat, plating menarik, fokus tajam, 8K) untuk {{platform-target}}.\n\nLalu tulis review dalam bahasa {{bahasa}} dengan tone {{tone-review}}:\n- Hook pembuka yang bikin ngiler\n- Deskripsi rasa, tekstur, aroma\n- Rekomendasi & rating\n- CTA + hashtag relevan\n\nTanpa watermark. Cocok untuk {{platform-target}}."
         },
         {
           "id": "before-after",
@@ -406,7 +423,8 @@
                 "Beauty",
                 "Lainnya"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "format-output",
@@ -447,7 +465,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional commercial photo for: Before After.\nContext: Tampilkan transformasi produk secara visual dengan format before/after yang meyakinkan. Tersedia pilihan split screen, slider, dan arrow indicator — ideal untuk konten skincare & beauty.\n\nUse the uploaded reference image as the PRIMARY subject/product.\n\nUser parameters:\n- Jenis Produk: {{jenis-produk}}\n- Format Output: {{format-output}}\n- Klaim Transformasi: {{klaim-transformasi}}\nAspect Ratio: {rasio_aspek}\n\nPHOTO REQUIREMENTS:\n- Product must be the clear focal point\n- Professional product photography quality\n- Perfect studio lighting, clean composition\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks, NO captions inside image\n- Suitable for marketplace / social media use"
+          "promptTemplate": "Buat visual perbandingan BEFORE/AFTER yang SANGAT MENARIK dan PROFESIONAL untuk {{jenis-produk}}.\n\nKLAIM TRANSFORMASI: {{klaim-transformasi}} | FORMAT: {{format-output}}\n\nPANDUAN VISUAL:\n- Layout {{format-output}} yang clean dan profesional\n- Sisi BEFORE: kondisi sebelum memakai produk\n- Sisi AFTER: hasil transformasi yang JELAS sesuai klaim \"{{klaim-transformasi}}\"\n- Label \"BEFORE\" & \"AFTER\" dengan typography BOLD kontras tinggi\n- Arrow indicator menunjukkan transformasi\n- Background bersih, pencahayaan konsisten di kedua sisi\n- Realistis dan kredibel (hindari klaim mustahil)\n\nSertakan caption singkat yang menonjolkan transformasi."
         },
         {
           "id": "thumbnail-generator",
@@ -499,7 +517,8 @@
                 "Playful",
                 "Luxury",
                 "Korean Style"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "warna-dominan",
@@ -514,7 +533,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -536,7 +556,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional commercial photo for: Thumbnail Generator.\nContext: Buat thumbnail yang menarik perhatian untuk YouTube, Instagram, dan TikTok. Gunakan foto referensi atau teks sebagai dasar, lalu AI menghasilkan desain profesional yang meningkatkan CTR.\n\nUse the uploaded reference image as the PRIMARY subject/product.\n\nUser parameters:\n- Judul / Teks Utama: {{judul-teks-utama}}\n- Platform: {{platform}}\n- Style Desain: {{style-desain}}\n- Warna Dominan: {{warna-dominan}}\nAspect Ratio: {rasio_aspek}\n\nPHOTO REQUIREMENTS:\n- Product must be the clear focal point\n- Professional product photography quality\n- Perfect studio lighting, clean composition\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks, NO captions inside image\n- Suitable for marketplace / social media use"
+          "promptTemplate": "Buat thumbnail profesional yang eye-catching untuk platform {{platform}} (rasio {{rasio_aspek}}) berdasarkan foto referensi yang diunggah.\n\nJUDUL UTAMA (HARUS MENONJOL): \"{{judul-teks-utama}}\"\nSTYLE DESAIN: {{style-desain}}\nWARNA DOMINAN: {{warna-dominan}}\n\nPERSYARATAN THUMBNAIL:\n- Sangat menarik perhatian dan clickable (CTR tinggi)\n- Teks BESAR, BOLD, mudah dibaca bahkan di ukuran kecil\n- Warna kontras tinggi untuk visibilitas maksimal\n- Komposisi dinamis dengan hierarki visual kuat\n- Subjek dari foto referensi tetap jadi fokus utama\n- Kualitas profesional, dioptimalkan untuk {{platform}}\n- Tanpa watermark, tanpa teks selain judul\n\nHasil: thumbnail {{rasio_aspek}} berkualitas tinggi siap pakai."
         },
         {
           "id": "packaging-design",
@@ -564,7 +584,8 @@
                 "Pouch",
                 "Botol"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "style-desain",
@@ -579,7 +600,8 @@
                 "Playful",
                 "Luxury",
                 "Korean Style"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "informasi-produk",
@@ -659,7 +681,8 @@
                 "Santai",
                 "Lucu"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -674,7 +697,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah-hashtag",
@@ -686,7 +710,7 @@
               "placeholder": "mis. 5"
             }
           ],
-          "promptTemplate": "Kamu adalah copywriter dan social media strategist profesional.\nTugas: Caption Generator — Buat caption media sosial yang engaging dalam hitungan detik. AI menghasilkan teks lengkap dengan hook, body, CTA, hashtag relevan, dan emoji untuk Instagram, TikTok, dan Facebook.\n\nData dari pengguna:\n- Deskripsi Konten / Foto: {{deskripsi-konten-foto}}\n- Platform: {{platform}}\n- Tone Bahasa: {{tone-bahasa}}\n- Target Audiens: {{target-audiens}}\n- Jumlah Hashtag: {{jumlah-hashtag}}\n\nInstruksi output:\n- Buat 3 VARIASI yang berbeda tone/approach\n- Setiap variasi: hook kuat di kalimat pertama, body yang engaging, CTA yang jelas\n- Sertakan emoji yang relevan dan natural\n- Sertakan hashtag yang relevan (sesuai jumlah yang diminta)\n- Gunakan Bahasa Indonesia yang natural, tidak kaku\n- Format rapi dengan pemisah antar variasi\n- Langsung bisa copy-paste, tanpa disclaimer"
+          "promptTemplate": "Kamu adalah expert social media copywriter untuk affiliate marketing.\n\nTUGAS: Buat 3 variasi caption menarik untuk {{platform}} dengan tone {{tone-bahasa}}, menyasar {{target-audiens}}.\nKONTEN: {{deskripsi-konten-foto}}\n\nFORMAT tiap caption:\n**CAPTION #[nomor]**\n- HOOK powerful (1-2 kalimat menarik perhatian)\n- BODY engaging (produk, manfaat, pengalaman)\n- CTA jelas (ajakan bertindak)\n- {{jumlah-hashtag}} hashtag relevan & trending\n\nBuat 3 variasi dengan angle berbeda (emosional, manfaat, urgensi). Sesuaikan gaya dengan {{platform}} dan {{target-audiens}}."
         },
         {
           "id": "carousel-produk",
@@ -747,7 +771,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -769,7 +794,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional commercial photo for: Carousel Produk.\nContext: Ubah satu foto produk menjadi set carousel media sosial yang menarik dan informatif. AI menyusun layout, teks, dan visual setiap slide secara otomatis siap posting di Instagram atau marketplace.\n\nUse the uploaded reference image as the PRIMARY subject/product.\n\nUser parameters:\n- Nama & Deskripsi Produk: {{nama-deskripsi-produk}}\n- Jumlah Slide: {{jumlah-slide}}\n- Platform: {{platform}}\n- Warna Brand: {{warna-brand}}\nAspect Ratio: {rasio_aspek}\n\nPHOTO REQUIREMENTS:\n- Product must be the clear focal point\n- Professional product photography quality\n- Perfect studio lighting, clean composition\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks, NO captions inside image\n- Suitable for marketplace / social media use"
+          "promptTemplate": "Buat carousel produk profesional ({{jumlah-slide}} slide) untuk {{platform}} dari produk: {{nama-deskripsi-produk}}.\n\nGunakan foto produk yang diunggah sebagai subjek. Warna brand: {{warna-brand}}.\n\nTiap slide punya peran jelas: (1) Hook/cover menarik, (2) Masalah/kebutuhan, (3-4) Fitur & manfaat utama, (terakhir) CTA + ajakan checkout.\n- Desain konsisten antar slide, warna brand {{warna-brand}}\n- Teks ringkas, BOLD, mudah dibaca\n- Produk tetap fokus, fotorealistik, tanpa watermark\nSertakan saran teks tiap slide."
         },
         {
           "id": "story-board",
@@ -798,7 +823,8 @@
                 "Film",
                 "Presentasi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah-framescene",
@@ -830,7 +856,8 @@
                 "Playful",
                 "Luxury",
                 "Korean Style"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -852,7 +879,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional, high-quality visual for: Story Board.\nContext: Rancang storyboard visual profesional untuk video, iklan, film pendek, atau campaign konten. AI menghasilkan rangkaian panel scene lengkap dengan deskripsi visual dan alur narasi.\n\nUser specifications:\n- Judul / Konsep Video: {{judul-konsep-video}}\n- Tujuan Konten: {{tujuan-konten}}\n- Jumlah Frame/Scene: {{jumlah-framescene}}\n- Deskripsi Alur Cerita: {{deskripsi-alur-cerita}}\n- Style Visual: {{style-visual}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Professional quality, photorealistic\n- High resolution, 8K\n- NO text overlays, NO watermarks inside image\n- Clean composition, perfect lighting\n- Ready for social media / commercial use"
+          "promptTemplate": "Buat storyboard visual tentang: \"{{judul-konsep-video}}\".\n\nTUJUAN: {{tujuan-konten}} | ALUR: {{deskripsi-alur-cerita}} | STYLE: {{style-visual}} | JUMLAH FRAME: {{jumlah-framescene}}\n\nTUGAS: Buat {{jumlah-framescene}} scene visual terhubung yang menceritakan SATU cerita utuh. Cerita mengalir natural dari awal ke akhir; tiap frame melanjutkan frame sebelumnya.\n\nPERSYARATAN:\n1. Semua frame tentang topik yang sama\n2. Tiap scene punya: sudut kamera, subjek, aksi, background, mood yang jelas\n3. Struktur: pembuka -> isi -> penutup\n4. Style visual konsisten: {{style-visual}}\nSertakan deskripsi singkat tiap frame."
         },
         {
           "id": "image-to-prompt",
@@ -882,7 +909,8 @@
                 "DALL-E",
                 "Stable Diffusion"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "level-detail",
@@ -926,7 +954,8 @@
                 "Top",
                 "45°"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jenis-objek",
@@ -937,7 +966,8 @@
                 "Orang",
                 "Makanan"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -1001,7 +1031,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "kecepatan-bicara",
@@ -1023,7 +1054,8 @@
                 "Santai",
                 "Energik"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah script writer dan voice over specialist profesional.\nTugas: Voice Over — Ubah teks menjadi suara narasi yang natural dan profesional. Pilih jenis suara, bahasa, aksen, dan kecepatan bicara untuk menghasilkan voice over berkualitas studio dalam hitungan detik.\n\nData dari pengguna:\n- Input Teks / Script: {{input-teks-script}}\n- Pilih Suara: {{pilih-suara}}\n- Bahasa & Aksen: {{bahasa-aksen}}\n- Kecepatan Bicara: {{kecepatan-bicara}}\n- Tone: {{tone}}\n\nFormat output script:\n[INTRO - pembuka yang menarik]\n[BODY - konten utama, natural mengalir]\n[OUTRO - penutup dengan CTA jika relevan]\n\nCatatan penulisan:\n- Tulis untuk DIDENGAR, bukan dibaca — gunakan kalimat pendek, natural\n- Hindari kata-kata yang sulit diucapkan\n- Tambahkan tanda [JEDA] untuk pause natural\n- Tandai [PENEKANAN] untuk kata yang perlu ditekankan\n- Estimasi durasi: sesuai yang diminta\n- Bahasa Indonesia yang natural dan mengalir"
@@ -1065,7 +1097,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -1145,7 +1178,8 @@
                 "POV",
                 "Tutorial"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah-frame",
@@ -1226,7 +1260,8 @@
                 "Side-by-Side",
                 "Sequential"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah-frame",
@@ -1312,7 +1347,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -1346,7 +1382,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah SEO content writer profesional.\nTugas: Generator Konten Marketing — Buat konten marketing untuk berbagai platform sekaligus — Instagram, Facebook, Email, hingga Google Ads. AI menyesuaikan gaya dan format konten sesuai karakter masing-masing platform.\n\nData dari pengguna:\n- Nama Produk / Jasa: {{nama-produk-jasa}}\n- Target Audiens: {{target-audiens}}\n- Platform: {{platform}}\n- Tujuan Kampanye: {{tujuan-kampanye}}\n- Tone Brand: {{tone-brand}}\n\nInstruksi output:\n- Struktur: Judul H1 → Meta description → Intro → H2/H3 → Konten → Penutup\n- Setiap paragraf 2-4 kalimat, mudah dibaca\n- Sisipkan keyword secara natural (tidak keyword stuffing)\n- Gunakan LSI keywords yang relevan\n- Bahasa Indonesia yang natural dan engaging\n- Akhiri dengan kesimpulan dan CTA\n- Siap publish tanpa editing tambahan"
@@ -1382,7 +1419,8 @@
                 "Kesehatan",
                 "Bayi & Anak",
                 "Hobi"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -1441,7 +1479,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "tren-saat-ini",
@@ -1503,7 +1542,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "durasi-iklan",
@@ -1525,7 +1565,8 @@
                 "Informatif",
                 "Lucu"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -1585,7 +1626,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "style-desain-landing-page",
@@ -1600,7 +1642,8 @@
                 "Playful",
                 "Luxury",
                 "Korean Style"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality visual for: Affiliate Link Landing Page.\nContext: Buat landing page produk affiliate yang dirancang untuk konversi tinggi. AI menghasilkan struktur halaman lengkap dengan copywriting persuasif, social proof, dan CTA yang mendorong klik.\n\nUser specifications:\n- Nama Produk: {{nama-produk}}\n- Link Affiliate: {{link-affiliate}}\n- Keunggulan & Fitur Produk: {{keunggulan-fitur-produk}}\n- Target Audiens: {{target-audiens}}\n- Style Desain Landing Page: {{style-desain-landing-page}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Professional quality, photorealistic\n- High resolution, 8K\n- NO text overlays, NO watermarks inside image\n- Clean composition, perfect lighting\n- Ready for social media / commercial use"
@@ -1729,7 +1772,8 @@
                 "Positif",
                 "Komparatif"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "poin-utama-yang-ingin-disampaikan",
@@ -1837,9 +1881,22 @@
             {
               "id": "industri-niche",
               "label": "Industri / Niche",
-              "type": "text",
+              "type": "select",
               "required": true,
-              "placeholder": "mis. fashion muslim"
+              "options": [
+                "Teknologi",
+                "Makanan & Minuman",
+                "Fashion & Kecantikan",
+                "Kesehatan & Wellness",
+                "Pendidikan",
+                "Keuangan",
+                "Properti",
+                "Kreatif & Seni",
+                "Olahraga & Fitness",
+                "Otomotif",
+                "Jasa"
+              ],
+              "allowCustom": true
             },
             {
               "id": "tujuan-spesifik",
@@ -1953,7 +2010,8 @@
                 "Part-Time",
                 "Remote"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah-pertanyaan-interview",
@@ -1996,7 +2054,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "budget-riset",
@@ -2181,7 +2240,8 @@
                 "CTR",
                 "Konversi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -2196,7 +2256,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "konteks-kampanye",
@@ -2262,7 +2323,7 @@
               "placeholder": "Masukkan target roi…"
             }
           ],
-          "promptTemplate": "Kamu adalah asisten AI profesional untuk AI ROI Calculator.\nTugas: Hitung ROI kampanye marketing secara otomatis dengan proyeksi profit dan break-even analysis. AI memberikan rekomendasi optimasi konkret untuk memaksimalkan hasil dari setiap rupiah yang dikeluarkan.\n\nData dari pengguna:\n- Total Biaya Kampanye: {{total-biaya-kampanye}}\n- Pendapatan dari Kampanye: {{pendapatan-dari-kampanye}}\n- Platform Iklan: {{platform-iklan}}\n- Periode Kampanye: {{periode-kampanye}}\n- Target ROI: {{target-roi}}\n\nInstruksi output:\n- Gunakan Bahasa Indonesia yang natural dan profesional\n- Format rapi dengan struktur yang jelas\n- Hasil berkualitas tinggi, detail, dan langsung bisa dipakai\n- Tidak perlu disclaimer atau penjelasan yang tidak diminta"
+          "promptTemplate": "Kamu adalah analis marketing profesional. Analisis ROI kampanye berikut.\n\nDATA KAMPANYE:\n- Platform Iklan: {{platform-iklan}}\n- Total Biaya: Rp {{total-biaya-kampanye}}\n- Pendapatan: Rp {{pendapatan-dari-kampanye}}\n- Periode: {{periode-kampanye}}\n- Target ROI: {{target-roi}}\n\nBerikan analisis dengan format:\n\n## Ringkasan Performa\nHitung laba bersih, ROI aktual (%), dan status (untung/rugi, tercapai target atau tidak).\n\n## Analisis Titik Impas\nJelaskan posisi break-even kampanye.\n\n## Risiko Utama (3 poin)\nTiap risiko beserta mitigasinya.\n\n## Rekomendasi Optimasi (5 tips konkret)\nTips actionable menaikkan ROI (turunkan biaya, naikkan konversi, retargeting, dll.).\n\n## Proyeksi\nProyeksi singkat bila tren dipertahankan.\n\nGunakan angka rupiah yang dihitung dari data di atas. Jelas, ringkas, actionable."
         },
         {
           "id": "product-comparison-generator",
@@ -2302,7 +2363,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "format-output",
@@ -2324,7 +2386,8 @@
                 "Sales",
                 "Edukasi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -2374,7 +2437,8 @@
                 "Newsletter",
                 "Follow-up"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-penerima",
@@ -2391,7 +2455,8 @@
                 "Formal",
                 "Santai"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "cta-yang-diinginkan",
@@ -2430,9 +2495,22 @@
             {
               "id": "industri-niche",
               "label": "Industri / Niche",
-              "type": "text",
+              "type": "select",
               "required": true,
-              "placeholder": "mis. fashion muslim"
+              "options": [
+                "Teknologi",
+                "Makanan & Minuman",
+                "Fashion & Kecantikan",
+                "Kesehatan & Wellness",
+                "Pendidikan",
+                "Keuangan",
+                "Properti",
+                "Kreatif & Seni",
+                "Olahraga & Fitness",
+                "Otomotif",
+                "Jasa"
+              ],
+              "allowCustom": true
             },
             {
               "id": "aspek-analisis",
@@ -2486,7 +2564,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "tahapan-funnel",
@@ -2543,9 +2622,22 @@
             {
               "id": "industri-niche",
               "label": "Industri / Niche",
-              "type": "text",
+              "type": "select",
               "required": true,
-              "placeholder": "mis. fashion muslim"
+              "options": [
+                "Teknologi",
+                "Makanan & Minuman",
+                "Fashion & Kecantikan",
+                "Kesehatan & Wellness",
+                "Pendidikan",
+                "Keuangan",
+                "Properti",
+                "Kreatif & Seni",
+                "Olahraga & Fitness",
+                "Otomotif",
+                "Jasa"
+              ],
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -2560,7 +2652,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "nilai-brand",
@@ -2613,7 +2706,8 @@
                 "Follow-up",
                 "Info"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "tone-pesan",
@@ -2624,7 +2718,8 @@
                 "Formal",
                 "Santai"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "cta-yang-diinginkan",
@@ -2662,7 +2757,8 @@
                 "Reminder",
                 "Info"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "nilai-penawaran",
@@ -2707,7 +2803,8 @@
                 "Reminder",
                 "Update"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "nama-aplikasi-brand",
@@ -2732,7 +2829,8 @@
                 "Informatif",
                 "Personal"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -2800,7 +2898,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "tone-komunikasi",
@@ -2815,7 +2914,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah asisten AI profesional untuk Referral Program Generator.\nTugas: Rancang program referral yang menarik dan buat seluruh copywriting pendukungnya. AI menghasilkan mekanisme program, pesan ajakan referral, dan materi promosi yang mendorong pelanggan aktif mengajak orang baru.\n\nData dari pengguna:\n- Nama Brand / Produk: {{nama-brand-produk}}\n- Reward Referrer & Referee: {{reward-referrer-referee}}\n- Platform Program: {{platform-program}}\n- Target Audiens: {{target-audiens}}\n- Tone Komunikasi: {{tone-komunikasi}}\n\nInstruksi output:\n- Gunakan Bahasa Indonesia yang natural dan profesional\n- Format rapi dengan struktur yang jelas\n- Hasil berkualitas tinggi, detail, dan langsung bisa dipakai\n- Tidak perlu disclaimer atau penjelasan yang tidak diminta"
@@ -2866,7 +2966,8 @@
                 "Hiburan",
                 "Promosi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -2881,7 +2982,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "hook-pembuka-yang-diinginkan",
@@ -2939,7 +3041,8 @@
                 "Edukasi",
                 "Promosi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "tren-saat-ini",
@@ -2987,7 +3090,8 @@
                 "Opini",
                 "Storytelling"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -3002,7 +3106,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "tujuan",
@@ -3013,7 +3118,8 @@
                 "Engagement",
                 "Follower"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah asisten AI profesional untuk Twitter/X Thread Generator.\nTugas: Tulis thread Twitter/X yang informatif, engaging, dan membangun otoritas di bidang Anda. AI menyusun alur thread yang runtut dengan hook di awal dan penutup yang mendorong engagement.\n\nData dari pengguna:\n- Topik Thread: {{topik-thread}}\n- Jumlah Tweet dalam Thread: {{jumlah-tweet-dalam-thread}}\n- Tone: {{tone}}\n- Target Audiens: {{target-audiens}}\n- Tujuan: {{tujuan}}\n\nInstruksi output:\n- Gunakan Bahasa Indonesia yang natural dan profesional\n- Format rapi dengan struktur yang jelas\n- Hasil berkualitas tinggi, detail, dan langsung bisa dipakai\n- Tidak perlu disclaimer atau penjelasan yang tidak diminta"
@@ -3052,7 +3158,8 @@
                 "Personal",
                 "Thought Leadership"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "panjang-post",
@@ -3140,7 +3247,8 @@
                 "Valentine",
                 "Kemerdekaan",
                 "Back to School"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "sertakan-thumbnail",
@@ -3153,7 +3261,7 @@
               "required": false
             }
           ],
-          "promptTemplate": "Create a professional, high-quality visual for: Social Media Calendar AI.\nContext: Rencanakan dan buat kalender konten media sosial bulanan secara otomatis. AI menyusun jadwal posting, tema harian, dan ide konten yang sesuai niche dan target audiens Anda.\n\nUser specifications:\n- Niche / Industri: {{niche-industri}}\n- Platform: {{platform}}\n- Periode Kalender: {{periode-kalender}}\n- Frekuensi Posting per Minggu: {{frekuensi-posting-per-minggu}}\n- Tema / Event Khusus (Opsional): {{tema-event-khusus}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Professional quality, photorealistic\n- High resolution, 8K\n- NO text overlays, NO watermarks inside image\n- Clean composition, perfect lighting\n- Ready for social media / commercial use",
+          "promptTemplate": "Kamu adalah social media strategist profesional. Buat kalender konten untuk niche {{niche-industri}} di platform {{platform}}.\n\nINFO:\n- Niche/Industri: {{niche-industri}}\n- Platform: {{platform}}\n- Periode: {{periode-kalender}}\n- Frekuensi posting: {{frekuensi-posting-per-minggu}}\n- Event/tema khusus: {{tema-event-khusus}}\n\nTUGAS: Buat kalender konten lengkap. Untuk SETIAP jadwal posting sertakan: tanggal/hari, tipe konten (edukasi/promosi/hiburan/UGC), ide judul/hook, caption singkat, rekomendasi format (foto/video/carousel/story), hashtag, dan waktu posting optimal.\n\nSusun rapi per minggu dalam bentuk tabel. Variasikan tipe konten (aturan 80/20: 80% value, 20% promosi). Sertakan ide khusus untuk {{tema-event-khusus}} bila relevan.",
           "thumbnailPrompt": "Create an eye-catching, click-worthy blog/article thumbnail about Social Media Calendar AI. Bold readable title text, vibrant modern design, high contrast. No watermark, no extra logos."
         },
         {
@@ -3209,7 +3317,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "tipe-konten",
@@ -3252,7 +3361,8 @@
                 "Santai",
                 "Lucu"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -3332,7 +3442,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "kata-kunci-utama",
@@ -3454,7 +3565,8 @@
                 "Hiburan",
                 "Promosi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -3469,7 +3581,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "cta-yang-diinginkan",
@@ -3516,7 +3629,8 @@
                 "Foto",
                 "Quote"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "keyword-target",
@@ -3598,7 +3712,8 @@
                 "Profesional",
                 "Storytime"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -3613,7 +3728,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah scriptwriter konten video profesional.\nTugas: Podcast Script Generator — Susun script episode podcast yang terstruktur, informatif, dan mengalir natural. AI menghasilkan rundown lengkap dari intro, segmen utama, hingga outro dengan talking points yang engaging untuk mempertahankan pendengar.\n\nData dari pengguna:\n- Topik Episode: {{topik-episode}}\n- Durasi Target (menit): {{durasi-target}}\n- Format: {{format}}\n- Tone: {{tone}}\n- Target Audiens: {{target-audiens}}\n\nFormat output:\n[HOOK - 3 detik pertama yang menghentikan scroll]\n[PROBLEM/CONTEXT - bangun relevansi]\n[CONTENT/VALUE - isi utama]\n[CTA - ajakan yang jelas]\n[CAPTION - untuk deskripsi postingan]\n[HASHTAG - 10-15 hashtag relevan]\n\nGunakan Bahasa Indonesia yang natural, energik, dan sesuai platform yang dipilih."
@@ -3644,7 +3760,8 @@
                 "Konversi",
                 "Awareness"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -3659,7 +3776,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "budget-harian",
@@ -3681,7 +3799,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah copywriter dan social media strategist profesional.\nTugas: Facebook Ads Copy Generator — Buat copy iklan Facebook dan Instagram Ads yang telah dioptimasi untuk berbagai format placement. AI menghasilkan variasi teks iklan dengan hook, body, dan CTA yang terbukti efektif untuk berbagai tujuan kampanye.\n\nData dari pengguna:\n- Nama Produk / Jasa: {{nama-produk-jasa}}\n- Tujuan Iklan: {{tujuan-iklan}}\n- Target Audiens: {{target-audiens}}\n- Budget Harian (Opsional): {{budget-harian}}\n- Tone Iklan: {{tone-iklan}}\n\nInstruksi output:\n- Buat 3 VARIASI yang berbeda tone/approach\n- Setiap variasi: hook kuat di kalimat pertama, body yang engaging, CTA yang jelas\n- Sertakan emoji yang relevan dan natural\n- Sertakan hashtag yang relevan (sesuai jumlah yang diminta)\n- Gunakan Bahasa Indonesia yang natural, tidak kaku\n- Format rapi dengan pemisah antar variasi\n- Langsung bisa copy-paste, tanpa disclaimer"
@@ -3860,7 +3979,7 @@
               "default": 1
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Perluas Foto.\nContext: Perluas area foto melampaui frame aslinya dengan AI generatif. Tambahkan background, ubah rasio aspek, atau lengkapi bagian foto yang terpotong dengan konten yang menyambung secara natural.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Rasio Aspek Target: {{rasio-aspek-target}}\n- Arah Perluasan: {{arah-perluasan}}\n- Deskripsi Konten Tambahan (Opsional): {{deskripsi-konten-tambahan}}\nAspect Ratio: {{rasio-aspek-target}}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Perluas (outpaint) foto ini ke rasio {{rasio-aspek-target}}. Arah perluasan: {{arah-perluasan}}. Konten tambahan: {{deskripsi-konten-tambahan}}.\n\nCRITICAL REQUIREMENTS:\n1. Pertahankan SEMUA konten foto asli PERSIS (wajah, objek, warna, detail)\n2. Scene asli tetap jadi fokus dan mudah dikenali\n3. Perluas scene secara natural ke arah {{arah-perluasan}}\n4. Cocokkan style, pencahayaan, warna, atmosfer foto asli SEMPURNA\n5. Blending mulus tanpa garis batas/jahitan\n6. Pertahankan perspektif, kedalaman, relasi spasial 3D\n7. Lanjutkan pola/tekstur/elemen logis\n8. Fotorealisme dan detail konsisten\n\nHasil: foto fotorealistik {{rasio-aspek-target}} yang menyatu mulus."
         },
         {
           "id": "expression-changer",
@@ -3885,12 +4004,19 @@
               "label": "Pilih Ekspresi Target",
               "type": "select",
               "options": [
-                "Senyum",
+                "Tersenyum Bahagia",
+                "Senyum Lembut",
                 "Serius",
-                "Kaget",
-                "Marah"
+                "Terkejut",
+                "Sedih",
+                "Tertawa",
+                "Percaya Diri",
+                "Berpikir",
+                "Antusias",
+                "Tenang / Netral"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "intensitas-ekspresi",
@@ -3923,7 +4049,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Expression Changer.\nContext: Ubah ekspresi wajah dalam foto menjadi ekspresi yang diinginkan — senyum, serius, gembira, atau terkejut. Hasil terlihat natural dan cocok untuk berbagai kebutuhan konten kreatif.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Pilih Ekspresi Target: {{pilih-ekspresi-target}}\n- Intensitas Ekspresi: {{intensitas-ekspresi}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Ubah ekspresi wajah orang pada foto ini menjadi ekspresi \"{{pilih-ekspresi-target}}\" dengan intensitas {{intensitas-ekspresi}}.\n\nCRITICAL REQUIREMENTS:\n- Pertahankan identitas, struktur wajah, dan SEMUA fitur wajah PERSIS sama\n- HANYA ubah ekspresi (mata, mulut, posisi alis)\n- JANGAN ubah: warna kulit, bentuk wajah, rambut, pakaian, atau background\n- Ekspresi harus natural dan realistis\n- Pertahankan pencahayaan, sudut, dan kualitas foto yang sama\n- Orang harus tetap jelas dikenali sebagai individu yang sama\n\nHasil: foto realistis dengan ekspresi baru yang natural."
         },
         {
           "id": "hair-generator",
@@ -3963,7 +4089,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -4033,7 +4160,8 @@
                 "Minimalis",
                 "Traditional"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -4085,7 +4213,8 @@
                 "Bibir",
                 "Wajah Keseluruhan"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "level-edit",
@@ -4151,7 +4280,8 @@
                 "Minimalis",
                 "Aesthetic",
                 "Vintage"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "intensitas-preset",
@@ -4267,7 +4397,8 @@
                 "Chibi",
                 "3D"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "background-miniatur",
@@ -4329,7 +4460,8 @@
                 "Valentine",
                 "Kemerdekaan",
                 "Back to School"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "teks-sampul",
@@ -4356,7 +4488,8 @@
                 "Faceless",
                 "With Face"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -4407,7 +4540,8 @@
                 "Sharpen",
                 "Repair"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "level-kualitas-output",
@@ -4440,7 +4574,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Restorasi Foto.\nContext: Perbaiki foto lama, rusak, buram, atau beresolusi rendah menjadi gambar jernih berkualitas tinggi. AI menganalisis kerusakan dan melakukan restorasi otomatis termasuk colorize foto hitam putih.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Jenis Restorasi: {{jenis-restorasi}}\n- Level Kualitas Output: {{level-kualitas-output}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Restorasi foto lama/rusak ini secara profesional. Jenis: {{jenis-restorasi}}. Tingkat kualitas: {{level-kualitas-output}}.\n\nCRITICAL RULES:\n1. Output HARUS terlihat LEBIH BAIK dari input (bukan menyalin)\n2. Lakukan perbaikan yang TERLIHAT JELAS: hilangkan goresan/noda, perbaiki warna pudar, pertajam detail, kurangi noise\n3. Pertahankan identitas wajah dan komposisi asli\n4. Jangan mengubah identitas orang di foto\n5. Jangan pernah mengeluarkan gambar asli tanpa perubahan\n\nHasil: foto direstorasi dengan peningkatan kualitas jelas dan natural."
         },
         {
           "id": "hapus-object",
@@ -4519,20 +4653,37 @@
             {
               "id": "industri-niche",
               "label": "Industri / Niche",
-              "type": "text",
+              "type": "select",
               "required": true,
-              "placeholder": "mis. fashion muslim"
+              "options": [
+                "Teknologi",
+                "Makanan & Minuman",
+                "Fashion & Kecantikan",
+                "Kesehatan & Wellness",
+                "Pendidikan",
+                "Keuangan",
+                "Properti",
+                "Kreatif & Seni",
+                "Olahraga & Fitness",
+                "Otomotif",
+                "Jasa"
+              ],
+              "allowCustom": true
             },
             {
               "id": "style-logo",
               "label": "Style Logo",
               "type": "select",
               "options": [
-                "Minimalis",
-                "Modern",
-                "Klasik"
+                "Wordmark (teks)",
+                "Symbol / Ikon",
+                "Kombinasi",
+                "Maskot",
+                "Emblem",
+                "Minimalis"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "warna-preferensi",
@@ -4547,7 +4698,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -4569,7 +4721,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional Logo Generator design.\nContext: Buat logo profesional untuk brand Anda dalam berbagai style dan variasi desain. AI menghasilkan logo unik lengkap dengan mockup preview siap pakai untuk keperluan branding.\n\nDesign specifications:\n- Nama Brand: {{nama-brand}}\n- Industri / Niche: {{industri-niche}}\n- Style Logo: {{style-logo}}\n- Warna Preferensi: {{warna-preferensi}}\n\nDESIGN REQUIREMENTS:\n- Professional, versatile, memorable design\n- Clean lines, balanced composition\n- Scalable vector-style quality\n- Works on both light and dark backgrounds\n- High resolution, transparent-ready\n- NO photographic elements, pure graphic design\n- Modern and timeless aesthetic"
+          "promptTemplate": "Buat desain logo profesional untuk \"{{nama-brand}}\".\n\nTIPE/STYLE: {{style-logo}} | INDUSTRI: {{industri-niche}} | WARNA: {{warna-preferensi}}\n\nDESIGN REQUIREMENTS:\n- Desain bersih, scalable, gaya vektor\n- Profesional dan mudah diingat\n- Cocok untuk industri {{industri-niche}}\n- Mengikuti tren desain modern\n- Tetap bagus dalam warna maupun hitam-putih\n- Kontras tinggi, legibilitas baik\n\nOUTPUT: logo berkualitas tinggi, background bersih, presentasi profesional."
         },
         {
           "id": "mascot-generator",
@@ -4605,7 +4757,8 @@
                 "3D",
                 "Ilustrasi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "industri-brand",
@@ -4627,7 +4780,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -4678,7 +4832,8 @@
                 "Promosi",
                 "Sosmed"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "upload-fotoelemen",
@@ -4701,7 +4856,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "format-ukuran",
@@ -4734,7 +4890,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Poster Generator.\nContext: Buat poster profesional untuk event, promosi, atau konten sosial media dalam hitungan detik. AI menggabungkan teks, visual, dan layout secara otomatis sesuai kebutuhan dan ukuran yang dipilih.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Judul / Teks Utama: {{judul-teks-utama}}\n- Tujuan Poster: {{tujuan-poster}}\n- Warna Tema: {{warna-tema}}\n- Format Ukuran: {{format-ukuran}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Buat poster profesional dengan tujuan: {{tujuan-poster}}.\n\nJUDUL UTAMA: \"{{judul-teks-utama}}\" | WARNA TEMA: {{warna-tema}} | FORMAT: {{format-ukuran}}\nSertakan foto/elemen yang diunggah bila ada.\n\nPERSYARATAN:\n- Hierarki visual kuat (judul menonjol)\n- Komposisi menarik dan rapi\n- Warna tema {{warna-tema}}, kontras tinggi\n- Tipografi profesional, mudah dibaca\n- Tanpa watermark\n\nHasil: poster {{format-ukuran}} berkualitas cetak/digital."
         },
         {
           "id": "banner-generator",
@@ -4784,7 +4940,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "upload-logo",
@@ -4814,7 +4971,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Banner Generator.\nContext: Desain banner digital profesional untuk website, media sosial, dan iklan online. AI menghasilkan variasi banner dengan komposisi visual yang menarik sesuai ukuran dan platform target.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Judul / Teks Banner: {{judul-teks-banner}}\n- Platform: {{platform}}\n- Ukuran Banner: {{ukuran-banner}}\n- Warna & Style Brand: {{warna-style-brand}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Buat banner promosi profesional untuk {{platform}} (ukuran {{ukuran-banner}}).\n\nTEKS UTAMA: \"{{judul-teks-banner}}\" | WARNA/STYLE BRAND: {{warna-style-brand}}\nSertakan logo yang diunggah bila ada.\n\nPERSYARATAN:\n- Teks BOLD, hierarki jelas (headline menonjol)\n- Komposisi seimbang, ruang untuk CTA\n- Warna sesuai brand: {{warna-style-brand}}\n- Kontras tinggi, profesional, siap tayang\n- Tanpa watermark\n\nHasil: banner {{ukuran-banner}} berkualitas tinggi."
         },
         {
           "id": "new-born-studio",
@@ -4847,7 +5004,8 @@
                 "Valentine",
                 "Kemerdekaan",
                 "Back to School"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "style-pencahayaan",
@@ -4861,7 +5019,8 @@
                 "Soft Light",
                 "Golden Hour",
                 "Backlight"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "background-preferensi",
@@ -4899,7 +5058,8 @@
                 "Dramatic & Cinematic",
                 "Soft & Elegant",
                 "Bold & Modern"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality photo for: New Born Studio.\nContext: Ciptakan foto bayi baru lahir yang menggemaskan dan berkesan dengan sentuhan AI. Upload foto bayi dan pilih tema, AI akan menghasilkan foto studio-quality yang penuh keajaiban.\n\nCRITICAL: Preserve the person's EXACT face, features, skin tone, and identity from the uploaded photo.\n\nUser parameters:\n- Tema/Properti Foto: {{temaproperti-foto}}\n- Style Pencahayaan: {{style-pencahayaan}}\n- Background Preferensi: {{background-preferensi}}\nMood/Atmosphere: {mood}\n\nPHOTO REQUIREMENTS:\n- The person's face must be clearly recognizable and identical to the reference photo\n- Professional photography quality, cinematic lighting\n- High resolution, 8K quality, photorealistic\n- No text overlays, no watermarks, no UI elements\n- Natural, authentic expression that matches the mood"
@@ -4931,7 +5091,8 @@
                 "Elegan",
                 "Artistic"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "background",
@@ -4979,7 +5140,8 @@
                 "Dramatic & Cinematic",
                 "Soft & Elegant",
                 "Bold & Modern"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality photo for: Foto Maternity.\nContext: Abadikan momen kehamilan dengan foto maternity yang indah dan penuh makna. AI menghasilkan foto berkualitas profesional dengan berbagai tema dan pencahayaan yang menonjolkan keindahan momen ini.\n\nCRITICAL: Preserve the person's EXACT face, features, skin tone, and identity from the uploaded photo.\n\nUser parameters:\n- Tema Foto: {{tema-foto}}\n- Background: {{background}}\n- Style Editing: {{style-editing}}\nMood/Atmosphere: {mood}\n\nPHOTO REQUIREMENTS:\n- The person's face must be clearly recognizable and identical to the reference photo\n- Professional photography quality, cinematic lighting\n- High resolution, 8K quality, photorealistic\n- No text overlays, no watermarks, no UI elements\n- Natural, authentic expression that matches the mood"
@@ -5017,7 +5179,8 @@
                 "Realistis",
                 "Ilustrasi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "background",
@@ -5055,7 +5218,8 @@
                 "Dramatic & Cinematic",
                 "Soft & Elegant",
                 "Bold & Modern"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality photo for: Foto Cita Cita Anak.\nContext: Wujudkan impian anak dengan foto profesional mengenakan seragam profesi pilihannya. AI menghasilkan visual yang realistis dan natural — cocok sebagai kenangan dan motivasi untuk si kecil.\n\nCRITICAL: Preserve the person's EXACT face, features, skin tone, and identity from the uploaded photo.\n\nUser parameters:\n- Pilih Profesi Impian: {{pilih-profesi-impian}}\n- Style Foto: {{style-foto}}\n- Background: {{background}}\nMood/Atmosphere: {mood}\n\nPHOTO REQUIREMENTS:\n- The person's face must be clearly recognizable and identical to the reference photo\n- Professional photography quality, cinematic lighting\n- High resolution, 8K quality, photorealistic\n- No text overlays, no watermarks, no UI elements\n- Natural, authentic expression that matches the mood"
@@ -5087,7 +5251,8 @@
                 "Traditional",
                 "Vintage"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "setting-lokasi",
@@ -5132,7 +5297,8 @@
                 "Dramatic & Cinematic",
                 "Soft & Elegant",
                 "Bold & Modern"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality photo for: Wedding Studio.\nContext: Buat foto pernikahan dan pre-wedding berkualitas profesional dengan bantuan AI. Pilih tema, setting, dan style editing untuk mengabadikan momen spesial dengan hasil yang memukau.\n\nCRITICAL: Preserve the person's EXACT face, features, skin tone, and identity from the uploaded photo.\n\nUser parameters:\n- Tema Pernikahan: {{tema-pernikahan}}\n- Setting Lokasi: {{setting-lokasi}}\n- Style Editing: {{style-editing}}\nMood/Atmosphere: {mood}\n\nPHOTO REQUIREMENTS:\n- The person's face must be clearly recognizable and identical to the reference photo\n- Professional photography quality, cinematic lighting\n- High resolution, 8K quality, photorealistic\n- No text overlays, no watermarks, no UI elements\n- Natural, authentic expression that matches the mood"
@@ -5209,7 +5375,8 @@
                 "Dramatic & Cinematic",
                 "Soft & Elegant",
                 "Bold & Modern"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality photo for: Foto Umrah/Haji.\nContext: Ciptakan foto spiritual yang berkesan dengan latar lokasi suci Mekah dan Madinah. Upload foto diri dan pilih setting, AI akan menghasilkan foto ibadah yang natural dan bermakna.\n\nCRITICAL: Preserve the person's EXACT face, features, skin tone, and identity from the uploaded photo.\n\nUser parameters:\n- Pilih Lokasi Suci: {{pilih-lokasi-suci}}\n- Style Pakaian Ihram: {{style-pakaian-ihram}}\n- Posisi Foto: {{posisi-foto}}\nMood/Atmosphere: {mood}\n\nPHOTO REQUIREMENTS:\n- The person's face must be clearly recognizable and identical to the reference photo\n- Professional photography quality, cinematic lighting\n- High resolution, 8K quality, photorealistic\n- No text overlays, no watermarks, no UI elements\n- Natural, authentic expression that matches the mood"
@@ -5241,7 +5408,8 @@
                 "Minimalis",
                 "Klasik"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jenis-ruangan",
@@ -5277,7 +5445,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Desain Rumah.\nContext: Redesain interior ruangan atau renovasi eksterior rumah secara virtual dengan AI. Eksplorasi berbagai gaya arsitektur dan dekorasi sebelum eksekusi nyata untuk menghemat waktu dan biaya.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Gaya Desain: {{gaya-desain}}\n- Jenis Ruangan: {{jenis-ruangan}}\n- Elemen yang Ingin Diubah: {{elemen-yang-ingin-diubah}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Desain ulang {{jenis-ruangan}} pada gambar yang diberikan dengan gaya {{gaya-desain}}.\n\nCRITICAL: Pertahankan struktur inti dan bentuk asli bangunan. Fokus hanya mengubah: {{elemen-yang-ingin-diubah}} (mis. fasad, warna, material, furnitur, landscaping).\n\n- Gaya desain: {{gaya-desain}}\n- Hasil WAJIB foto fotorealistik dari {{jenis-ruangan}} yang sudah didesain ulang\n- Pencahayaan natural, detail tinggi, 8K."
         },
         {
           "id": "desain-kamar",
@@ -5306,7 +5474,8 @@
                 "Minimalis",
                 "Korean"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "warna-dominan",
@@ -5321,7 +5490,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "elemen-dekorasi-preferensi",
@@ -5379,7 +5549,8 @@
                 "Arsitektur",
                 "Karakter"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "style-output",
@@ -5401,7 +5572,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -5452,7 +5624,8 @@
                 "Event",
                 "Hari Spesial"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "upload-template-frame",
@@ -5489,7 +5662,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional AI-edited photo for: Twibon Frame Generator.\nContext: Tambahkan frame atau border foto bertemakan kampanye, event, atau hari spesial secara profesional. Cocok untuk mempererat identitas komunitas dan meningkatkan partisipasi dalam kampanye digital.\n\nApply the transformation to the uploaded reference image.\n\nUser parameters:\n- Tema Frame: {{tema-frame}}\n- Teks pada Frame (Opsional): {{teks-pada-frame}}\nAspect Ratio: {rasio_aspek}\n\nREQUIREMENTS:\n- Maintain the subject's identity from the reference image\n- Professional quality result, realistic and natural\n- High resolution, 8K, photorealistic\n- NO text overlays, NO watermarks\n- Clean, polished final result"
+          "promptTemplate": "Buat Twibon profesional (bingkai/border overlay foto) bertema: {{tema-frame}}. Teks pada frame: \"{{teks-pada-frame}}\".\n\nCRITICAL - BACKGROUND GREEN SCREEN:\nBagian TENGAH 60% gambar HARUS berupa GREEN SCREEN solid (#00FF00 hijau terang) — tempat foto pengguna akan tampil. JANGAN beri dekorasi apa pun di area hijau ini (tanpa gradient/bayangan).\n\nELEMEN FRAME (hanya di tepi):\n- Tepi atas (15%): banner dekoratif bertema + teks \"{{teks-pada-frame}}\"\n- Tepi bawah (15%): border dekoratif bertema\n- Empat sudut: ornamen sudut\n- Tepi kiri/kanan: border tipis dekoratif\n\nTema: {{tema-frame}} | Rasio: {{rasio_aspek}} | Kualitas tinggi."
         },
         {
           "id": "timelapse-renovasi",
@@ -5526,7 +5699,8 @@
                 "Interior",
                 "Eksterior"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "style-akhir-yang-diinginkan",
@@ -5584,7 +5758,8 @@
                 "Timeline",
                 "How-To"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "warna-brand",
@@ -5599,7 +5774,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -5662,7 +5838,8 @@
                 "Buku",
                 "Packaging"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "warna-produk",
@@ -5677,7 +5854,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -5730,9 +5908,22 @@
             {
               "id": "industri-niche",
               "label": "Industri / Niche",
-              "type": "text",
+              "type": "select",
               "required": true,
-              "placeholder": "mis. fashion muslim"
+              "options": [
+                "Teknologi",
+                "Makanan & Minuman",
+                "Fashion & Kecantikan",
+                "Kesehatan & Wellness",
+                "Pendidikan",
+                "Keuangan",
+                "Properti",
+                "Kreatif & Seni",
+                "Olahraga & Fitness",
+                "Otomotif",
+                "Jasa"
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah-warna-dalam-palet",
@@ -5871,7 +6062,8 @@
                 "Orang",
                 "Arsitektur"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -5984,7 +6176,8 @@
                 "Bold",
                 "Aesthetic"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "warna-brand",
@@ -5999,7 +6192,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -6061,7 +6255,8 @@
                 "iPad",
                 "Smartphone"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "style-mockup",
@@ -6072,7 +6267,8 @@
                 "Lifestyle",
                 "Flat"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "warna-background",
@@ -6087,7 +6283,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -6157,7 +6354,8 @@
                 "Biru",
                 "Putih"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "pilihan-pakaian",
@@ -6256,7 +6454,8 @@
                 "Dramatic & Cinematic",
                 "Soft & Elegant",
                 "Bold & Modern"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality photo for: Graduation Photo.\nContext: Ciptakan foto wisuda profesional lengkap dengan toga dan background kampus yang megah. Abadikan momen pencapaian penting dengan kualitas foto yang setara hasil studio profesional.\n\nCRITICAL: Preserve the person's EXACT face, features, skin tone, and identity from the uploaded photo.\n\nUser parameters:\n- Pilih Jenis Toga: {{pilih-jenis-toga}}\n- Background Kampus (Opsional): {{background-kampus}}\n- Style Editing: {{style-editing}}\nMood/Atmosphere: {mood}\n\nPHOTO REQUIREMENTS:\n- The person's face must be clearly recognizable and identical to the reference photo\n- Professional photography quality, cinematic lighting\n- High resolution, 8K quality, photorealistic\n- No text overlays, no watermarks, no UI elements\n- Natural, authentic expression that matches the mood"
@@ -6292,7 +6491,8 @@
                 "Valentine",
                 "Kemerdekaan",
                 "Back to School"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "pilih-frame",
@@ -6402,7 +6602,8 @@
                 "Dramatic & Cinematic",
                 "Soft & Elegant",
                 "Bold & Modern"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality photo for: Foto Ulang Tahun.\nContext: Buat foto perayaan ulang tahun yang meriah dan personal untuk semua usia. AI menghasilkan foto profesional dengan berbagai tema dekorasi ulang tahun yang disesuaikan selera.\n\nCRITICAL: Preserve the person's EXACT face, features, skin tone, and identity from the uploaded photo.\n\nUser parameters:\n- Usia / Target Usia: {{usia-target-usia}}\n- Tema Ulang Tahun: {{tema-ulang-tahun}}\n- Elemen Dekorasi: {{elemen-dekorasi}}\nMood/Atmosphere: {mood}\n\nPHOTO REQUIREMENTS:\n- The person's face must be clearly recognizable and identical to the reference photo\n- Professional photography quality, cinematic lighting\n- High resolution, 8K quality, photorealistic\n- No text overlays, no watermarks, no UI elements\n- Natural, authentic expression that matches the mood"
@@ -6434,7 +6635,8 @@
                 "CV",
                 "Bisnis"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "style-background",
@@ -6445,7 +6647,8 @@
                 "Office",
                 "Blur"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "dress-code",
@@ -6486,7 +6689,8 @@
                 "Dramatic & Cinematic",
                 "Soft & Elegant",
                 "Bold & Modern"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Create a professional, high-quality photo for: Professional Headshot Studio.\nContext: Hasilkan foto headshot profesional berkualitas tinggi untuk LinkedIn, CV, dan profil bisnis. AI menyesuaikan pencahayaan, background, dan polesan akhir agar tampil percaya diri dan terpercaya.\n\nCRITICAL: Preserve the person's EXACT face, features, skin tone, and identity from the uploaded photo.\n\nUser parameters:\n- Tujuan: {{tujuan}}\n- Style Background: {{style-background}}\n- Dress Code: {{dress-code}}\nMood/Atmosphere: {mood}\n\nPHOTO REQUIREMENTS:\n- The person's face must be clearly recognizable and identical to the reference photo\n- Professional photography quality, cinematic lighting\n- High resolution, 8K quality, photorealistic\n- No text overlays, no watermarks, no UI elements\n- Natural, authentic expression that matches the mood"
@@ -6518,7 +6722,8 @@
                 "Casual",
                 "Profesional"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "moodsuasana",
@@ -6532,7 +6737,8 @@
                 "Mewah",
                 "Hangat",
                 "Energik"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -6740,7 +6946,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "panjang-artikel",
@@ -6766,7 +6973,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "target-seo-keyword",
@@ -6820,7 +7028,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "panjang-artikel",
@@ -6846,7 +7055,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -6861,7 +7071,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "sertakan-thumbnail",
@@ -6907,7 +7118,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "panjang-artikel",
@@ -6933,7 +7145,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "target-seo-keyword",
@@ -6987,7 +7200,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "panjang-artikel-per-item",
@@ -7013,7 +7227,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah-artikel",
@@ -7088,7 +7303,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "sertakan-thumbnail",
@@ -7146,7 +7362,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "pertahankan-struktur-asli",
@@ -7202,7 +7419,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jenis-keyword",
@@ -7213,7 +7431,8 @@
                 "Transaksional",
                 "LSI"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "volume-pencarian-minimal",
@@ -7278,7 +7497,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "search-engine-target",
@@ -7327,7 +7547,8 @@
                 "News",
                 "Tutorial"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "warna-tema",
@@ -7342,7 +7563,8 @@
                 "Monokrom",
                 "Earth tone",
                 "Sesuai brand"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah",
@@ -7364,7 +7586,7 @@
               ]
             }
           ],
-          "promptTemplate": "Create a professional Thumbnail Artikel Generator.\nContext: Buat thumbnail artikel yang menarik klik dan sesuai topik konten secara otomatis. AI menghasilkan visual thumbnail berkualitas tinggi yang konsisten dengan branding dan style blog Anda.\n\nSpecifications:\n- Judul Artikel: {{judul-artikel}}\n- Topik / Niche: {{topik-niche}}\n- Style Thumbnail: {{style-thumbnail}}\n- Warna Tema: {{warna-tema}}\nAspect Ratio: {rasio_aspek}\n\nDESIGN REQUIREMENTS:\n- Eye-catching, high visual impact\n- Clear hierarchy: headline → subtext → CTA\n- High contrast colors for visibility\n- Professional typography and layout\n- High resolution, print/web ready, 8K quality\n- Optimized for the specified platform"
+          "promptTemplate": "Buat thumbnail artikel/blog yang eye-catching dan clickable untuk judul: \"{{judul-artikel}}\" (topik: {{topik-niche}}).\n\nSTYLE: {{style-thumbnail}} | WARNA TEMA: {{warna-tema}} | RASIO: {{rasio_aspek}}\n\nPERSYARATAN:\n- Teks judul BESAR, BOLD, mudah dibaca\n- Kontras tinggi, hierarki visual kuat\n- Ilustrasi/ikon relevan dengan topik {{topik-niche}}\n- Desain modern, profesional, CTR tinggi\n- Tanpa watermark\n\nHasil: thumbnail artikel {{rasio_aspek}} siap unggah ke blog/media sosial."
         },
         {
           "id": "meta-description-generator",
@@ -7409,7 +7631,8 @@
                 "Jawa",
                 "Sunda",
                 "Inggris-Indonesia"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "panjang",
@@ -7717,7 +7940,8 @@
                 "Gender",
                 "Lokasi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "platform-media-sosial",
@@ -7750,7 +7974,8 @@
                 "Produk",
                 "Konten"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah data analyst dan marketing consultant profesional.\nTugas: Audience Persona Builder — Bangun profil buyer persona yang detail dan akurat berdasarkan data demografis, psikografis, dan perilaku target audiens. Hasilkan dokumen persona yang bisa langsung digunakan sebagai panduan strategi konten dan marketing.\n\nData dari pengguna:\n- Nama Brand / Produk: {{nama-brand-produk}}\n- Data Demografis: {{data-demografis}}\n- Platform Media Sosial: {{platform-media-sosial}}\n- Perilaku & Minat Target: {{perilaku-minat-target}}\n- Tujuan Persona: {{tujuan-persona}}\n\nInstruksi output:\n- Analisis mendalam dengan visualisasi data yang jelas\n- Gunakan tabel, bullet point, dan struktur yang mudah dibaca\n- Berikan insight yang actionable dan konkret\n- Sertakan rekomendasi dan next steps\n- Bahasa Indonesia profesional\n\nSetelah analisis, tambahkan:\n[VISUAL PROMPT]\nProfessional dashboard/infographic visualization for the analysis above.\nClean data visualization style, professional color scheme, no lorem ipsum."
@@ -7850,7 +8075,8 @@
                 "Signup",
                 "Klik"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -7902,7 +8128,8 @@
                 "Sales",
                 "FAQ"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "nama-brand",
@@ -7932,7 +8159,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah scriptwriter konten video profesional.\nTugas: Chatbot Script Builder — Rancang alur percakapan chatbot yang cerdas dan efektif untuk WhatsApp, Instagram DM, dan website. AI membantu membangun skrip yang mampu menjawab pertanyaan umum, mengarahkan prospek, dan meningkatkan konversi lead.\n\nData dari pengguna:\n- Platform Chatbot: {{platform-chatbot}}\n- Tujuan Chatbot: {{tujuan-chatbot}}\n- Nama Brand: {{nama-brand}}\n- Alur Percakapan Utama: {{alur-percakapan-utama}}\n- Tone Bahasa Bot: {{tone-bahasa-bot}}\n\nFormat output:\n[HOOK - 3 detik pertama yang menghentikan scroll]\n[PROBLEM/CONTEXT - bangun relevansi]\n[CONTENT/VALUE - isi utama]\n[CTA - ajakan yang jelas]\n[CAPTION - untuk deskripsi postingan]\n[HASHTAG - 10-15 hashtag relevan]\n\nGunakan Bahasa Indonesia yang natural, energik, dan sesuai platform yang dipilih."
@@ -8077,7 +8305,8 @@
                 "Santai",
                 "Edukasi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah-frame",
@@ -8148,7 +8377,8 @@
                 "Informatif",
                 "Urgensi"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "target-audiens",
@@ -8163,7 +8393,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "jumlah-frame",
@@ -8228,7 +8459,8 @@
                 "Pelajar/Mahasiswa",
                 "UMKM",
                 "Umum"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "durasi-video",
@@ -8252,7 +8484,8 @@
                 "Realistis",
                 "Minimalis"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "jumlah-frame",
@@ -8313,7 +8546,8 @@
                 "Dokumenter",
                 "Commercial"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "mood-tone-visual",
@@ -8328,7 +8562,8 @@
                 "Elegan",
                 "Hard-sell",
                 "Inspiratif"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "durasi-target",
@@ -8409,7 +8644,8 @@
                 "Profesional",
                 "Talking Head"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "durasi",
@@ -8481,7 +8717,8 @@
                 "Dramatis",
                 "ASMR"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "setting-meja",
@@ -8575,7 +8812,8 @@
                 "Third Person",
                 "Close-Up"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "durasi-target",
@@ -8670,7 +8908,8 @@
                 "Kesehatan",
                 "Bayi & Anak",
                 "Hobi"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "platform",
@@ -8815,7 +9054,8 @@
                 "Naikkan AOV",
                 "Habiskan Stok"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah asisten AI profesional untuk Bundle Product Generator.\nTugas: Temukan kombinasi bundling produk yang menarik dan buat copywriting paket yang persuasif. AI menganalisis produk yang saling melengkapi dan menghasilkan nama paket, deskripsi, dan argumen nilai yang meyakinkan pembeli.\n\nData dari pengguna:\n- Daftar Produk yang Dimiliki: {{daftar-produk-yang-dimiliki}}\n- Target Harga Bundle: {{target-harga-bundle}}\n- Target Pembeli: {{target-pembeli}}\n- Platform Marketplace: {{platform-marketplace}}\n- Tujuan: {{tujuan}}\n\nInstruksi output:\n- Gunakan Bahasa Indonesia yang natural dan profesional\n- Format rapi dengan struktur yang jelas\n- Hasil berkualitas tinggi, detail, dan langsung bisa dipakai\n- Tidak perlu disclaimer atau penjelasan yang tidak diminta"
@@ -8852,7 +9092,8 @@
                 "Kesehatan",
                 "Bayi & Anak",
                 "Hobi"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "spesifikasi-teknis",
@@ -8911,7 +9152,8 @@
                 "Kesehatan",
                 "Bayi & Anak",
                 "Hobi"
-              ]
+              ],
+              "allowCustom": true
             },
             {
               "id": "keunggulan-toko",
@@ -8997,7 +9239,8 @@
                 "Emosional",
                 "Minimalis"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             }
           ],
           "promptTemplate": "Kamu adalah copywriter dan social media strategist profesional.\nTugas: Product Image Caption Marketplace — Buat caption dan teks overlay untuk setiap foto produk di marketplace agar lebih informatif dan menarik perhatian. AI menghasilkan teks singkat yang menonjolkan fitur utama sesuai posisi gambar dalam galeri produk.\n\nData dari pengguna:\n- Nama Produk: {{nama-produk}}\n- Jumlah Foto Produk: {{jumlah-foto-produk}}\n- Fitur yang Ingin Ditonjolkan per Foto: {{fitur-yang-ingin-ditonjolkan-per-foto}}\n- Platform Marketplace: {{platform-marketplace}}\n- Tone: {{tone}}\n\nInstruksi output:\n- Buat 3 VARIASI yang berbeda tone/approach\n- Setiap variasi: hook kuat di kalimat pertama, body yang engaging, CTA yang jelas\n- Sertakan emoji yang relevan dan natural\n- Sertakan hashtag yang relevan (sesuai jumlah yang diminta)\n- Gunakan Bahasa Indonesia yang natural, tidak kaku\n- Format rapi dengan pemisah antar variasi\n- Langsung bisa copy-paste, tanpa disclaimer"
@@ -9022,7 +9265,8 @@
                 "Gratis Ongkir",
                 "Diskon"
               ],
-              "required": true
+              "required": true,
+              "allowCustom": true
             },
             {
               "id": "nilai-promo",
