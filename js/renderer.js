@@ -202,7 +202,16 @@ async function runTool(tool, fields, ui) {
   try {
     if (tool.outputType === 'text') {
       const text = await AIApi.aiText(prompt);
-      renderTextResult(result, text);
+      if (values['sertakan-thumbnail'] === 'Ya' && tool.thumbnailPrompt) {
+        let thumb = null;
+        try {
+          const r = await AIApi.aiImageFull(fillTemplate(tool.thumbnailPrompt, values), [], aspect, 1);
+          thumb = r.images[0];
+        } catch (e) { /* thumbnail gagal — tetap tampilkan teks */ }
+        renderTextWithThumb(result, text, thumb);
+      } else {
+        renderTextResult(result, text);
+      }
     } else if (tool.outputType === 'sound') {
       const voice = values['voice'] || values['suara'] || 'Charon';
       const url = await AIApi.aiTTS(values['teks'] || values['script'] || prompt, voice);
@@ -230,7 +239,7 @@ function renderImageResult(host, images, text, tool) {
   host.innerHTML = '';
   if (text) {
     const cap = el('div', 'result-caption');
-    cap.innerHTML = `<p>${esc(text)}</p><button class="chip" id="copy-cap">Salin teks</button>`;
+    cap.innerHTML = `<div class="md">${mdToHtml(text)}</div><button class="chip" id="copy-cap">Salin teks</button>`;
     host.appendChild(cap);
     cap.querySelector('#copy-cap').onclick = () => copyText(text);
   }
@@ -247,12 +256,71 @@ function renderImageResult(host, images, text, tool) {
 function renderTextResult(host, text) {
   host.innerHTML = '';
   const box = el('div', 'text-result');
-  box.innerHTML = `<div class="text-body">${esc(text).replace(/\n/g, '<br>')}</div>
+  box.innerHTML = `<div class="md">${mdToHtml(text)}</div>
     <div class="result-actions">
       <button class="btn btn-ghost" id="copy-txt">Salin</button>
     </div>`;
   host.appendChild(box);
   box.querySelector('#copy-txt').onclick = () => copyText(text);
+}
+
+/* Teks + thumbnail opsional (gambar di atas, artikel di bawah). */
+function renderTextWithThumb(host, text, imgSrc) {
+  host.innerHTML = '';
+  const box = el('div', 'text-result');
+  const thumb = imgSrc
+    ? `<div class="thumb-wrap"><img src="${imgSrc}" alt="thumbnail">
+         <a class="img-dl" download="thumbnail.png" href="${imgSrc}">⬇ Unduh</a></div>`
+    : '';
+  box.innerHTML = `${thumb}<div class="md">${mdToHtml(text)}</div>
+    <div class="result-actions"><button class="btn btn-ghost" id="copy-txt">Salin teks</button></div>`;
+  host.appendChild(box);
+  box.querySelector('#copy-txt').onclick = () => copyText(text);
+}
+
+/* Konverter Markdown ringan → HTML (heading, bold, italic, list, tabel, hr, link). */
+function mdToHtml(src) {
+  const ic = s => esc(s)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  const lines = String(src).replace(/\r/g, '').split('\n');
+  const out = []; let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    if (/^\s*#{1,6}\s/.test(line)) {
+      const m = line.match(/^\s*(#{1,6})\s+(.*)$/);
+      const lv = Math.min(m[1].length + 1, 5);
+      out.push(`<h${lv}>${ic(m[2])}</h${lv}>`); i++; continue;
+    }
+    if (/^\s*([-*_])\1{2,}\s*$/.test(line)) { out.push('<hr>'); i++; continue; }
+    // Tabel: baris dengan | diikuti baris pemisah ---|---
+    if (/\|/.test(line) && i + 1 < lines.length && /^\s*\|?[\s:|-]+\|?\s*$/.test(lines[i + 1]) && /-/.test(lines[i + 1])) {
+      const cells = s => s.replace(/^\s*\|/, '').replace(/\|\s*$/, '').split('|').map(x => x.trim());
+      const head = cells(line); i += 2;
+      let t = '<table><thead><tr>' + head.map(h => `<th>${ic(h)}</th>`).join('') + '</tr></thead><tbody>';
+      while (i < lines.length && /\|/.test(lines[i]) && lines[i].trim()) {
+        t += '<tr>' + cells(lines[i]).map(c => `<td>${ic(c)}</td>`).join('') + '</tr>'; i++;
+      }
+      out.push(t + '</tbody></table>'); continue;
+    }
+    if (/^\s*[-*]\s+/.test(line)) {
+      out.push('<ul>');
+      while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) { out.push('<li>' + ic(lines[i].replace(/^\s*[-*]\s+/, '')) + '</li>'); i++; }
+      out.push('</ul>'); continue;
+    }
+    if (/^\s*\d+\.\s+/.test(line)) {
+      out.push('<ol>');
+      while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) { out.push('<li>' + ic(lines[i].replace(/^\s*\d+\.\s+/, '')) + '</li>'); i++; }
+      out.push('</ol>'); continue;
+    }
+    if (/^\s*$/.test(line)) { i++; continue; }
+    const para = [line]; i++;
+    while (i < lines.length && lines[i].trim() && !/^\s*(#{1,6}\s|[-*]\s|\d+\.\s|[-*_]{3,}\s*$)/.test(lines[i]) && !/\|/.test(lines[i])) { para.push(lines[i]); i++; }
+    out.push('<p>' + ic(para.join(' ')) + '</p>');
+  }
+  return out.join('\n');
 }
 
 function renderAudioResult(host, url) {
