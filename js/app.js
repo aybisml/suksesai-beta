@@ -4,7 +4,16 @@
 
 const APP = { categories: [], tools: [], byId: {} };
 
-document.addEventListener('DOMContentLoaded', init);
+// Init aman untuk pemuatan normal MAUPUN dinamis (script disuntik
+// setelah DOMContentLoaded). Expose ke window agar loader bisa memanggil.
+window.init = init;
+let __inited = false;
+function __boot() { if (__inited) return; __inited = true; init(); }
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', __boot);
+} else {
+  __boot();
+}
 
 async function init() {
   bindShell();
@@ -22,7 +31,7 @@ async function init() {
 /* ----------------------------- Data ----------------------------- */
 async function loadCatalog() {
   if (APP.tools.length) return;
-  const res = await fetch(window.TOOLS_URL || 'tools.json');
+  const res = await fetch(window.TOOLS_URL || 'tools.json', { cache: 'no-store' });
   const data = await res.json();
   APP.categories = data.categories || [];
   APP.categories.forEach(c => {
